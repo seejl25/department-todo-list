@@ -1,4 +1,5 @@
 const Header = ({ path }) => {
+    
     return (
         <header>
             <h1>Department {path}</h1>

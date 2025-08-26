@@ -14,18 +14,18 @@ const Meeting = () => {
         setShowForm(!showForm)
     }
 
-        useEffect(() => {
-            const fetchMeeting = async () => {
-                const response = await fetch('/api/meeting')
-                const json = await response.json()
-    
-                if (response.ok) {
-                    dispatch({type:'SET_MEETING', payload:json})
-                }
+    useEffect(() => {
+        const fetchMeeting = async () => {
+            const response = await fetch('/api/meeting')
+            const json = await response.json()
+
+            if (response.ok) {
+                dispatch({type:'SET_MEETING', payload:json})
             }
-    
-            fetchMeeting()
-        }, [dispatch])
+        }
+
+        fetchMeeting()
+    }, [dispatch])
 
     return (
         <div className="container">

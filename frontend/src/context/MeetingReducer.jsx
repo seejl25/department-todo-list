@@ -1,4 +1,5 @@
 export const meetingReducer = (state, action) => {
+    
     switch (action.type) {
         case 'SET_MEETING':
             return {

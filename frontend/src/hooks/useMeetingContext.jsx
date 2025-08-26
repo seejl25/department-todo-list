@@ -7,6 +7,5 @@ export const useMeetingContext = () => {
     if (!context) {
         throw Error('useMeetingContext must be used inside an MeetingContextProvider')
     }
-
     return context
 }

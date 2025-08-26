@@ -5,6 +5,7 @@ import dashboardIcon from "../assets/dashboard.svg"
 import meetingIcon from "../assets/meeting.svg"
 
 const Navbar = () => {
+    
     return (
         <nav>
             <div className="dashboard">

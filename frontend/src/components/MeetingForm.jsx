@@ -111,6 +111,7 @@ const MeetingForm = ({ onClose }) => {
 
             <button>Add Meeting</button>
             {error && <div className="error">{error}</div>}
+            
         </form>
     )
 }

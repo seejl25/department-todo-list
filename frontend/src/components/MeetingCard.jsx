@@ -36,6 +36,7 @@ const MeetingCard = ({ meeting }) => {
                 <p>{meeting.title}</p>
             </div>
             }
+            
             {expandMeeting && 
             <div className='single'>
                 <button onClick={handleClick}><img src={cancelIcon} alt="" /></button>
