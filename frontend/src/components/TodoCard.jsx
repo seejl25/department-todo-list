@@ -2,6 +2,7 @@
 import checkIcon from "../assets/check.svg"
 import delIcon from "../assets/delete.svg"
 import cancelIcon from "../assets/cancel.svg"
+
 import { useState } from "react"
 import { useTodoContext } from "../hooks/useTodoContext"
 

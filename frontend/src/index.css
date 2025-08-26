@@ -48,7 +48,7 @@ header h1, header h2 {
 
 .container {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: 0.3fr auto 0.3fr auto;
 }
 
@@ -245,4 +245,84 @@ div.error {
 
 input.error, select.error {
   border: 1px solid #e7195a;
+}
+
+.meeting-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 37px;
+}
+
+.meetings {
+  grid-column: 2/3;
+  grid-row: 1/5;
+  padding: 1rem;
+  border-left: solid 1px black;
+}
+
+.meeting-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.meeting-header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.meeting-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.meeting-card p {
+  margin-top: 0;
+  font-weight: 300;
+}
+
+.date-time {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.meeting-card button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-top: 1rem;
+}
+
+.meeting-card h2 {
+  padding: 1rem 0;
+}
+
+.meeting-card span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.meeting-card h3, .meeting-card h4 {
+  margin-bottom: 5px;
+}
+
+.single {
+  background-color: #f5f5f5;
+  border-bottom: solid 1px;
+  padding: 0 1rem;
+}
+
+#cancel {
+  background-color: transparent;
+  border: none;
+  float: right;
+  padding: 0;
 }
