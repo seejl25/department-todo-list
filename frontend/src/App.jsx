@@ -7,10 +7,12 @@ import Header from './components/Header'
 // pages
 import Dashboard from './pages/Dashboard'
 import Meeting from './pages/Meeting'
+import Announcement from './pages/Announcement.jsx'
 
 // context
 import { TodoContextProvider } from './context/TodoContext'
 import { MeetingContextProvider } from './context/MeetingContext.jsx'
+import { AnnouncementContextProvider } from './context/AnnouncementContext.jsx'
 
 function App() {
 
@@ -39,6 +41,17 @@ function App() {
                   <MeetingContextProvider>
                     <Meeting />
                   </MeetingContextProvider>
+                </>
+              }
+            />
+            <Route 
+              path='/announcement'
+              element={
+                <>
+                  <Header path="Announcements" />
+                  <AnnouncementContextProvider>
+                    <Announcement />
+                  </AnnouncementContextProvider>
                 </>
               }
             />
