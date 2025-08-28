@@ -53,7 +53,7 @@ header h1, header h2 {
 
 .container h2 {
   margin: 0;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 .tasks-today {
@@ -248,16 +248,21 @@ input.error, select.error {
 
 .meeting-nav {
   display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 1rem;
   margin-top: 1rem;
-  margin-left: 37px;
+}
+
+.meetings-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 1rem;
 }
 
 .meetings {
   grid-column: 2/3;
   grid-row: 1/5;
-  padding: 1rem;
+  padding: 0 0 1rem 1rem;
   border-left: solid 1px black;
 }
 
@@ -325,3 +330,118 @@ input.error, select.error {
   float: right;
   padding: 0;
 }
+
+.minutes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 0.5rem;
+}
+
+.filter button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.single button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-top: 1rem;
+}
+
+.single h2 {
+  padding-top: 1rem;
+  margin: 0;
+}
+
+.single h4 {
+  margin: 0.8rem 0 0.0 0;
+  font-weight: 400;
+}
+
+.single p:last-child {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+#minutes-title {
+  padding-top: 1rem;
+  margin: 0;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.minutes-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.minutes-card p {
+  font-weight: 300;
+}
+
+.other-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.other-info span {
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.create-minutes {
+  grid-column: 1/2;
+  padding: 1rem;
+}
+
+.create-minutes input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+}
+
+.create-minutes textarea {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  min-height: 250px;
+}
+
+.create-minutes button {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  color: black;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
