@@ -1,5 +1,4 @@
 // icons
-import checkIcon from "../assets/check.svg"
 import delIcon from "../assets/delete.svg"
 import cancelIcon from "../assets/cancel.svg"
 
@@ -9,7 +8,7 @@ import { useTodoContext } from "../hooks/useTodoContext"
 const TodoCard = ({ todo }) => {
     const { dispatch } = useTodoContext()
     const [expandTask, setExpandTask] = useState(false)
-    const [checkClicked, setCheckClicked] = useState(false)
+    const [status, setStatus] = useState("pending")
 
     const handleClick = () => {
         setExpandTask(!expandTask)
@@ -26,27 +25,28 @@ const TodoCard = ({ todo }) => {
         }
     }
 
-    const checkClick = () => {
-        setCheckClicked(!checkClicked)
-    }
-
     return (
         <div>
             {!expandTask && 
-            <div className={todo.priority ? "priority" : "normal"}>
+            <div className={status === "completed" ? "completed" : (status === "inProgress" ? "in-progress" : "pending")}>
+                <div className={todo.priority ? "priority" : ""}>
+        
+                </div>
                 <div className="options">
                     <div className="progress">
-                        <label>In progress</label>
-                        <input type="checkbox" />
+                        <select name="status" id="status" value={status} onChange={e => setStatus(e.target.value)}>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
                     </div>
                     <div className="complete">
-                        <button><img src={checkIcon} alt="" onClick={checkClick}/></button>
                         <button><img src={delIcon} alt="" onClick={delClick}/></button>
                     </div>
                 </div>
                 <h4 
                     onClick={handleClick} 
-                    style={checkClicked ? 
+                    style={status === "completed" ? 
                         {textDecoration: "line-through 2px", color: 'rgba(0,0,0,0.3)'} : 
                         {textDecoration: "underline 2px"}}
                     
@@ -56,7 +56,7 @@ const TodoCard = ({ todo }) => {
             </div>
             }
             {expandTask && (
-                <div className={todo.priority ? "large-priority" : "large-normal"}>
+                <div className={status === "completed" ? "large-completed" : (status === "inProgress" ? "large-in-progress" : "large-pending")}>
                     <button onClick={handleClick}><img src={cancelIcon} alt="" /></button>
                     <h2>Task Details</h2>
                     <h3>{todo.title}</h3>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 // icons
 import dashboardIcon from "../assets/dashboard.svg"
@@ -11,21 +11,21 @@ const Navbar = () => {
         <nav>
             <div className="dashboard">
                 <img src={dashboardIcon} alt="" />
-                <Link to="/">
+                <NavLink to="/" className={({isActive}) => isActive ? "active" : ""}>
                     <h2>Dashboard</h2>
-                </Link>
+                </NavLink>
             </div>
             <div className="meeting-nav">
                 <img src={meetingIcon} alt="" />
-                <Link to="/meeting">
+                <NavLink to="/meeting" className={({isActive}) => isActive ? "active" : ""}>
                     <h2>Meetings</h2>
-                </Link>
+                </NavLink>
             </div>
             <div className="announcement-nav">
                 <img src={announcementIcon} alt="" />
-                <Link to="/announcement">
+                <NavLink to="/announcement" className={({isActive}) => isActive ? "active" : ""}>
                     <h2>Announcements</h2>
-                </Link>
+                </NavLink>
             </div>
         </nav>
     )
