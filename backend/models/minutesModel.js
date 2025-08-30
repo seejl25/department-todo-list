@@ -22,6 +22,10 @@ const minutesSchema = new Schema({
     notes: {
         type: String,
         required: true
+    },
+    user_code: {
+        type: String,
+        required: true
     }
 }, {timestamps: true})
 

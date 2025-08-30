@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react"
 import { useAnnouncementContext } from "../hooks/useAnnouncementContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 import AnnouncementCard from "../components/AnnouncementCard"
 import AnnouncementForm from "../components/AnnouncementForm"
 
 const Announcement = () => {
     const {announcements, dispatch} = useAnnouncementContext()
+    const {user} = useAuthContext()
     const [filteredDate, setFilteredDate] = useState("")
 
     useEffect(() => {
         const fetchAnnouncements = async () => {
-            const response = await fetch('/api/announcement')
+            const response = await fetch('/api/announcement', {
+                headers: {
+                    'Authorization':`Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -17,8 +23,10 @@ const Announcement = () => {
             }
         }
 
-        fetchAnnouncements()
-    }, [dispatch])
+        if (user) {
+            fetchAnnouncements()
+        }
+    }, [dispatch, user])
 
     return (
         <div className="announcement-container">

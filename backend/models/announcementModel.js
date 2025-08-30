@@ -10,6 +10,10 @@ const announcementSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    user_code: {
+        type: String,
+        required: true
     }
 }, {timestamps: true})
 

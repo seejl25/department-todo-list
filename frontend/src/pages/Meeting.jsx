@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useMeetingContext } from "../hooks/useMeetingContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 import MeetingCard from "../components/MeetingCard"
 import MeetingForm from "../components/MeetingForm"
 import MinutesCard from "../components/MinutesCard"
@@ -10,6 +11,7 @@ import addIcon from '../assets/add.svg'
 
 const Meeting = () => {
     const {meetings, minutes, dispatch} = useMeetingContext()
+    const {user} = useAuthContext()
     const [showForm, setShowForm] = useState(false)
     const [showMinForm, setShowMinForm] = useState(false)
     const [filterDate, setFilterDate] = useState("")
@@ -24,7 +26,11 @@ const Meeting = () => {
 
     useEffect(() => {
         const fetchMeeting = async () => {
-            const response = await fetch('/api/meeting')
+            const response = await fetch('/api/meeting', {
+                headers: {
+                    'Authorization':`Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -33,7 +39,11 @@ const Meeting = () => {
         }
 
         const fetchMinutes = async () => {
-            const response = await fetch('/api/minutes')
+            const response = await fetch('/api/minutes', {
+                headers: {
+                    'Authorization':`Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -41,9 +51,12 @@ const Meeting = () => {
             }
         }
 
-        fetchMeeting()
-        fetchMinutes()
-    }, [dispatch])
+        if (user) {
+            fetchMeeting()
+            fetchMinutes()
+        }
+
+    }, [dispatch, user])
 
     return (
         <div className="meetings-container">

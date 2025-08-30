@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 // GET all meetings
 const getMeetings = async (req, res) => {
-    const meetings = await Meeting.find({}).sort({createdAt: -1})
+    const user_code = req.user.code
+    const meetings = await Meeting.find({user_code}).sort({createdAt: -1})
 
     res.status(200).json(meetings)
 }
@@ -60,7 +61,8 @@ const createMeeting = async (req, res) => {
     }
 
     try {
-        const meeting = await Meeting.create({title, organiser, date, time, duration, location, description})
+        const user_code = req.user.code
+        const meeting = await Meeting.create({title, organiser, date, time, duration, location, description, user_code})
         res.status(200).json(meeting)
     } catch (error) {
         res.status(400).json({error: error.message})

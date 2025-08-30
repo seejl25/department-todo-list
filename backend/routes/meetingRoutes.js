@@ -8,6 +8,10 @@ const {
     deleteMeeting
 } = require('../controllers/meetingController')
 
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
+
 // GET all meetings
 router.get('/', getMeetings)
 

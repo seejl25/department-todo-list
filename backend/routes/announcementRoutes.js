@@ -9,6 +9,10 @@ const {
     deleteAnnouncement
 } = require('../controllers/announcementController')
 
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
+
 // GET all announcements
 router.get('/', getAnnouncements)
 

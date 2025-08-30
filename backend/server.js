@@ -6,6 +6,7 @@ const todoRoutes = require('./routes/todoRoutes')
 const meetingRoutes = require('./routes/meetingRoutes')
 const minutesRoutes = require('./routes/minutesRoutes')
 const announcementRoutes = require('./routes/announcementRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 // express app
 const app = express()
@@ -23,6 +24,7 @@ app.use('/api/todo', todoRoutes)
 app.use('/api/meeting', meetingRoutes)
 app.use('/api/minutes', minutesRoutes)
 app.use('/api/announcement', announcementRoutes)
+app.use('/api/user', userRoutes)
 
 
 // connect to db

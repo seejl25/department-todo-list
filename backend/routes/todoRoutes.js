@@ -9,6 +9,11 @@ const {
     deleteTodo
 } = require('../controllers/todoController')
 
+const requireAuth = require('../middleware/requireAuth')
+
+// require auth for all routes
+router.use(requireAuth)
+
 // GET all to dos
 router.get('/', getTodos)
 

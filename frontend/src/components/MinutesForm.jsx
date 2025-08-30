@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useMeetingContext } from "../hooks/useMeetingContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 import cancelIcon from '../assets/cancel.svg'
 
 const MinutesForm = ({ onClose }) => {
     const { dispatch } = useMeetingContext()
+    const {user} = useAuthContext()
     const [title, setTitle] = useState("")
     const [writer, setWriter] = useState("")
     const [date, setDate] = useState("")
@@ -16,13 +18,19 @@ const MinutesForm = ({ onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const minutes = { title, writer, date, time, notes}
 
         const response = await fetch('/api/minutes', {
             method: 'POST',
             body: JSON.stringify(minutes),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization':`Bearer ${user.token}`
             }
         })
         const json = await response.json()

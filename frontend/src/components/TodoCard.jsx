@@ -4,9 +4,11 @@ import cancelIcon from "../assets/cancel.svg"
 
 import { useState } from "react"
 import { useTodoContext } from "../hooks/useTodoContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const TodoCard = ({ todo }) => {
     const { dispatch } = useTodoContext()
+    const {user} = useAuthContext()
     const [expandTask, setExpandTask] = useState(false)
     const [status, setStatus] = useState("pending")
 
@@ -15,8 +17,14 @@ const TodoCard = ({ todo }) => {
     }   
 
     const delClick = async () => {
+        if (!user) {
+            return
+        }
         const response = await fetch('/api/todo/' + todo._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization':`Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 

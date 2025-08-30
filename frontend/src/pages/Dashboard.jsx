@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useTodoContext } from "../hooks/useTodoContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import TodoCard from "../components/TodoCard"
@@ -7,10 +8,15 @@ import TodoForm from "../components/TodoForm"
 
 const Dashboard = () => {
     const {todos, dispatch} = useTodoContext()
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchTodo = async () => {
-            const response = await fetch('/api/todo')
+            const response = await fetch('/api/todo', {
+                headers: {
+                    'Authorization':`Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -18,8 +24,11 @@ const Dashboard = () => {
             }
         }
 
-        fetchTodo()
-    }, [dispatch])
+        if (user) {
+            fetchTodo()
+        }
+
+    }, [dispatch, user])
 
     return (
         <div className="container">

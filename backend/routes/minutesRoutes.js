@@ -8,6 +8,10 @@ const {
     deleteMinutes
 } = require('../controllers/minutesController')
 
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
+
 // GET all minutes
 router.get('/', getMinutes)
 

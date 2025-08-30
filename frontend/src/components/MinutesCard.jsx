@@ -1,4 +1,5 @@
 import { useMeetingContext } from '../hooks/useMeetingContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 import { useState } from 'react'
 
 // icons
@@ -7,6 +8,7 @@ import cancelIcon from '../assets/cancel.svg'
 
 const MinutesCard = ({ minutes }) => {
     const { dispatch } = useMeetingContext()
+    const {user} = useAuthContext()
     const [expandMinutes, setExpandMinutes] = useState(false)
 
     const handleClick = () => {
@@ -14,8 +16,15 @@ const MinutesCard = ({ minutes }) => {
     }
 
     const delClick = async () => {
+        if (!user) {
+            return
+        }
+
         const response = await fetch('/api/minutes/' + minutes._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization':`Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 

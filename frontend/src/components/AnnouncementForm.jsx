@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useAnnouncementContext } from "../hooks/useAnnouncementContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const AnnouncementForm = () => {
     const { dispatch } = useAnnouncementContext()
+    const {user} = useAuthContext()
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [error, setError] = useState(null)
@@ -11,13 +13,19 @@ const AnnouncementForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const announcement = {title, description}
 
         const response = await fetch('/api/announcement', {
             method: 'POST',
             body: JSON.stringify(announcement),
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                'Authorization':`Bearer ${user.token}`
             }
         })
         const json = await response.json()
