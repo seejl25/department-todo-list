@@ -2,7 +2,6 @@ import { useAnnouncementContext } from "../hooks/useAnnouncementContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 
 import delIcon from '../assets/delete.svg'
-import avatarIcon from '../assets/avatar.svg'
 import cancelIcon from '../assets/cancel.svg'
 import { useState } from "react"
 
@@ -38,20 +37,32 @@ const AnnouncementCard = ({ announcements }) => {
             {!expandAnnouncement &&
             <div className="single-a">
                 <button onClick={delClick}><img src={delIcon} alt="" /></button>
-                <img src={avatarIcon} alt="" id="avatar"/>
-                <h3 onClick={expandClick}>{announcements.title}</h3>
-                <div className="line">
-                    <p id="a-text">{announcements.description}</p>
-                    <p>{announcements.createdAt.slice(0,10)}</p>
+                <div className="content">
+                    <div className="avatar">
+                        {user.email.split('@')[0][0].toUpperCase()}
+                    </div>
+                    <div className="words">
+                        <h3 onClick={expandClick}>{announcements.title}</h3>
+                        <div className="line">
+                            <p id="a-text">{announcements.description}</p>
+                            <p>{announcements.createdAt.slice(0,10)}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             }
             {expandAnnouncement && 
                 <div className="single-a">
                     <button onClick={expandClick}><img src={cancelIcon} alt="" /></button>
-                    <img src={avatarIcon} alt="" id="avatar"/>
-                    <p id="user">{user.email.split('@')[0]}</p>
-                    <p id="date">{announcements.createdAt.slice(0, 10)}</p>
+                    <div className="content">
+                        <div className="avatar">
+                            {user.email.split('@')[0][0].toUpperCase()}
+                        </div>
+                        <div className="user">
+                            <p id="user">{user.email.split('@')[0]}</p>
+                            <p id="date">{announcements.createdAt.slice(0, 10)}</p>
+                        </div>
+                    </div>
                     <h4>{announcements.title}</h4>
                     <p id="description">{announcements.description}</p>
                 </div>

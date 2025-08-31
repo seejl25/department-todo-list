@@ -11,7 +11,7 @@ const TodoCard = ({ todo }) => {
     const {user} = useAuthContext()
     const [expandTask, setExpandTask] = useState(false)
     const [status, setStatus] = useState("pending")
-
+    const [completedCount, setCompletedCount] = useState(0)
     const handleClick = () => {
         setExpandTask(!expandTask)
     }   
@@ -42,7 +42,15 @@ const TodoCard = ({ todo }) => {
                 </div>
                 <div className="options">
                     <div className="progress">
-                        <select name="status" id="status" value={status} onChange={e => setStatus(e.target.value)}>
+                        <select 
+                            name="status" 
+                            id="status" 
+                            value={status} 
+                            onChange={(e) => {
+                                setStatus(e.target.value)
+                                setCompletedCount(completedCount + 1)
+                            }}
+                        >
                             <option value="pending">Pending</option>
                             <option value="inProgress">In Progress</option>
                             <option value="completed">Completed</option>
@@ -65,6 +73,9 @@ const TodoCard = ({ todo }) => {
             }
             {expandTask && (
                 <div className={status === "completed" ? "large-completed" : (status === "inProgress" ? "large-in-progress" : "large-pending")}>
+                    <div className={todo.priority ? "priority" : ""}>
+        
+                    </div>
                     <button onClick={handleClick}><img src={cancelIcon} alt="" /></button>
                     <h2>Task Details</h2>
                     <h3>{todo.title}</h3>
