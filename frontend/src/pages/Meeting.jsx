@@ -26,7 +26,7 @@ const Meeting = () => {
 
     useEffect(() => {
         const fetchMeeting = async () => {
-            const response = await fetch('/api/meeting', {
+            const response = await fetch('https://clarityboard.onrender.com/api/meeting', {
                 headers: {
                     'Authorization':`Bearer ${user.token}`
                 }
@@ -39,7 +39,7 @@ const Meeting = () => {
         }
 
         const fetchMinutes = async () => {
-            const response = await fetch('/api/minutes', {
+            const response = await fetch('https://clarityboard.onrender.com/api/minutes', {
                 headers: {
                     'Authorization':`Bearer ${user.token}`
                 }

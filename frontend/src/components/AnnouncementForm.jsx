@@ -20,7 +20,7 @@ const AnnouncementForm = () => {
 
         const announcement = {title, description}
 
-        const response = await fetch('/api/announcement', {
+        const response = await fetch('https://clarityboard.onrender.com/api/announcement', {
             method: 'POST',
             body: JSON.stringify(announcement),
             headers: {

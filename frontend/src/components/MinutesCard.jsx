@@ -20,7 +20,7 @@ const MinutesCard = ({ minutes }) => {
             return
         }
 
-        const response = await fetch('/api/minutes/' + minutes._id, {
+        const response = await fetch('https://clarityboard.onrender.com/api/minutes/' + minutes._id, {
             method: 'DELETE',
             headers: {
                 'Authorization':`Bearer ${user.token}`

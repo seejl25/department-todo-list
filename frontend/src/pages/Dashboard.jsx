@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchTodo = async () => {
-            const response = await fetch('/api/todo', {
+            const response = await fetch('https://clarityboard.onrender.com/api/todo', {
                 headers: {
                     'Authorization':`Bearer ${user.token}`
                 }

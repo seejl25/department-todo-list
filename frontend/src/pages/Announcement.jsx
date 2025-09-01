@@ -11,7 +11,7 @@ const Announcement = () => {
 
     useEffect(() => {
         const fetchAnnouncements = async () => {
-            const response = await fetch('/api/announcement', {
+            const response = await fetch('https://clarityboard.onrender.com/api/announcement', {
                 headers: {
                     'Authorization':`Bearer ${user.token}`
                 }

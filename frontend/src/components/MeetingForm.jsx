@@ -27,7 +27,7 @@ const MeetingForm = ({ onClose }) => {
 
         const meeting = { title, organiser, date, time, duration, location, description}
 
-        const response = await fetch('/api/meeting', {
+        const response = await fetch('https://clarityboard.onrender.com/api/meeting', {
             method: 'POST',
             body: JSON.stringify(meeting),
             headers: {

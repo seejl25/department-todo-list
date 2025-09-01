@@ -25,7 +25,7 @@ const MinutesForm = ({ onClose }) => {
 
         const minutes = { title, writer, date, time, notes}
 
-        const response = await fetch('/api/minutes', {
+        const response = await fetch('https://clarityboard.onrender.com/api/minutes', {
             method: 'POST',
             body: JSON.stringify(minutes),
             headers: {

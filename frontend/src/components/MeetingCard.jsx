@@ -20,7 +20,7 @@ const MeetingCard = ({ meeting }) => {
             return
         }
 
-        const response = await fetch('/api/meeting/' + meeting._id, {
+        const response = await fetch('https://clarityboard.onrender.com/api/meeting/' + meeting._id, {
             method: 'DELETE',
             headers: {
                 'Authorization':`Bearer ${user.token}`

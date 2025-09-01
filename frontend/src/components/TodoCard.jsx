@@ -20,7 +20,7 @@ const TodoCard = ({ todo }) => {
         if (!user) {
             return
         }
-        const response = await fetch('/api/todo/' + todo._id, {
+        const response = await fetch('https://clarityboard.onrender.com/api/todo/' + todo._id, {
             method: 'DELETE',
             headers: {
                 'Authorization':`Bearer ${user.token}`

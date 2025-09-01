@@ -15,7 +15,7 @@ const AnnouncementCard = ({ announcements }) => {
             return
         }
 
-        const response = await fetch('/api/announcement/' + announcements._id, {
+        const response = await fetch('https://clarityboard.onrender.com/api/announcement/' + announcements._id, {
             method: 'DELETE',
             headers: {
                 'Authorization':`Bearer ${user.token}`

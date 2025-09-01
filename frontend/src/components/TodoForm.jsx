@@ -23,7 +23,7 @@ const TodoForm = () => {
 
         const todo = {title, username, due, priority, description}
 
-        const response = await fetch('/api/todo', {
+        const response = await fetch('https://clarityboard.onrender.com/api/todo', {
             method: 'POST',
             body: JSON.stringify(todo),
             headers: {
