@@ -14,13 +14,13 @@ const userRoutes = require('./routes/userRoutes')
 const app = express()
 
 // middleware
-app.use(express.json())
-
 app.use(cors({
     origin: 'https://clarityboard.netlify.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }))
+
+app.use(express.json())
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
