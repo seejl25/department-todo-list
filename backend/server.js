@@ -2,6 +2,8 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
+
 const todoRoutes = require('./routes/todoRoutes')
 const meetingRoutes = require('./routes/meetingRoutes')
 const minutesRoutes = require('./routes/minutesRoutes')
@@ -13,6 +15,12 @@ const app = express()
 
 // middleware
 app.use(express.json())
+
+app.use(cors({
+    origin: 'https://clarityboard.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}))
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
